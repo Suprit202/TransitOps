@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TransitOps.Models.DriverViewModel>
+
+@{
+    ViewData["Title"] = "Driver Registry";
+}
+
+<div class="flex justify-between items-center mb-6">
+    <div>
+        <h1 class="text-3xl font-semibold text-white">TransitOps</h1>
+        <h2 class="text-xl text-gray-400 mt-1">Driver Management</h2>
+    </div>
+    <div>
+        <a asp-action="Create" class="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded shadow transition duration-150">
+            + Add Driver
+        </a>
+    </div>
+</div>
+
+<!-- Dynamic Unified Search Bar -->
+<div class="bg-gray-800 p-4 rounded-lg shadow border border-gray-700 mb-6 flex items-center justify-between">
+    <form asp-action="Index" method="get" class="flex space-x-3 w-full max-w-2xl">
+        <input type="text" name="searchString" value="@ViewBag.CurrentSearchString" placeholder="Search by name or license..."
+               class="bg-gray-900 border border-gray-600 text-gray-200 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2" />
+
+        <button type="submit" class="bg-gray-700 hover:bg-gray-600 text-white font-medium rounded text-sm px-5 py-2 transition duration-150">
+            Search
+        </button>
+
+        @if (!string.IsNullOrEmpty(ViewBag.CurrentSearchString))
+        {
+            <a asp-action="Index" class="text-gray-400 hover:text-white font-medium rounded text-sm px-3 py-2 transition duration-150 flex items-center">
+                Clear
+            </a>
+        }
+    </form>
+</div>
+
+<!-- Driver Table -->
+<div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700">
+    <table class="w-full text-left border-collapse">
+        <thead>
+            <tr class="bg-gray-900 border-b border-gray-700 text-sm tracking-wider uppercase text-gray-400">
+                <th class="p-4 font-medium">Full Name</th>
+                <th class="p-4 font-medium">License Info</th>
+                <th class="p-4 font-medium">Contact</th>
+                <th class="p-4 font-medium">Safety</th>
+                <th class="p-4 font-medium">Status</th>
+                <th class="p-4 font-medium">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-sm">
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="6" class="p-6 text-center text-gray-500">No drivers registered yet.</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <tr class="border-b border-gray-700 hover:bg-gray-750 transition duration-150">
+                        <td class="p-4 font-medium text-white">@item.FullName</td>
+                        <td class="p-4">
+                            <div class="text-white">@item.LicenseNumber</div>
+                            <div class="text-xs text-gray-500">@item.LicenseCategory | Exp: @item.LicenseExpiryDate.ToString("yyyy-MM-dd")</div>
+                        </td>
+                        <td class="p-4 text-gray-300">@item.ContactNumber</td>
+                        <td class="p-4">
+                            <span class="px-2 py-1 rounded text-xs @(item.SafetyScore >= 90 ? "bg-green-900 text-green-300" : "bg-yellow-900 text-yellow-300")">
+                                @item.SafetyScore
+                            </span>
+                        </td>
+                        <td class="p-4 text-blue-400 font-medium">@item.StatusName</td>
+                        <td class="p-4 flex items-center space-x-3">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="text-blue-400 hover:text-blue-300 transition duration-150">Edit</a>
+                            <span class="text-gray-600">|</span>
+                            <button type="button"
+                                    onclick="openGlobalDeleteModal('@Url.Action("Delete", "Driver", new { id = item.Id })', 'driver', '@item.FullName')"
+                                    class="text-red-400 hover:text-red-300 transition duration-150">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

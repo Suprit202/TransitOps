@@ -9,6 +9,7 @@ namespace TransitOps.MappingProfiles
         public UiProfile()
         {
             CreateMap<VehicleDto, VehicleViewModel>().ReverseMap();
+            CreateMap<DriverDto, DriverViewModel>().ReverseMap();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace TransitOpsService.DependencyInjection
         {
             services.AddRepositoryDI(connectionString);
             services.AddScoped<IVehicleService, VehicleService>();
+            services.AddScoped<IDriverService, DriverService>();
             return services;
         }
     }

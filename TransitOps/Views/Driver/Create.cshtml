@@ -1,0 +1,77 @@
+﻿@model TransitOps.Models.DriverViewModel
+
+@{
+    ViewData["Title"] = "Add Driver";
+}
+
+<div class="max-w-2xl mx-auto bg-gray-800 rounded-lg shadow-lg border border-gray-700 p-8">
+    <h2 class="text-2xl font-semibold text-white mb-6">Register New Driver</h2>
+
+    <form asp-action="Create" method="post">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+
+            <!-- Full Name -->
+            <div>
+                <label asp-for="FullName" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                <input asp-for="FullName" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+                <span asp-validation-for="FullName" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- License Number -->
+            <div>
+                <label asp-for="LicenseNumber" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                <input asp-for="LicenseNumber" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+                <span asp-validation-for="LicenseNumber" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- License Category -->
+            <div>
+                <label asp-for="LicenseCategory" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                <input asp-for="LicenseCategory" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+                <span asp-validation-for="LicenseCategory" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- License Expiry Date -->
+            <div>
+                <label asp-for="LicenseExpiryDate" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                <input asp-for="LicenseExpiryDate" type="date" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+                <span asp-validation-for="LicenseExpiryDate" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- Contact Number -->
+            <div>
+                <label asp-for="ContactNumber" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                <input asp-for="ContactNumber" type="tel" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+                <span asp-validation-for="ContactNumber" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- Safety Score -->
+            <div>
+                <label asp-for="SafetyScore" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                <input asp-for="SafetyScore" type="number" step="0.1" value="100.0" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+                <span asp-validation-for="SafetyScore" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- Status Dropdown -->
+            <div class="md:col-span-2">
+                <label asp-for="StatusId" class="block text-sm font-medium text-gray-400 mb-1">Status</label>
+                <select asp-for="StatusId" asp-items="@ViewBag.StatusList" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                    <option value="">-- Select Status --</option>
+                </select>
+                <span asp-validation-for="StatusId" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+        </div>
+
+        <div class="flex justify-end space-x-4">
+            <a asp-action="Index" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition duration-150">Cancel</a>
+            <button type="submit" class="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded shadow transition duration-150">Save Driver</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -25,11 +25,11 @@
                     Dashboard
                 </a>
 
-                <a asp-controller="Vehicle" asp-action="Index" class="block px-4 py-2 text-sm font-medium text-white bg-gray-800 border-l-4 border-yellow-600 rounded-r transition-colors duration-150">
+                <a asp-controller="Vehicle" asp-action="Index" class="block px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-r transition-colors duration-150">
                     Fleet
                 </a>
 
-                <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white rounded transition-colors duration-150">
+                <a asp-controller="Driver" asp-action="Index" class="block px-4 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white rounded transition-colors duration-150">
                     Drivers
                 </a>
                 <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white rounded transition-colors duration-150">
@@ -126,9 +126,9 @@
         }
     </script>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

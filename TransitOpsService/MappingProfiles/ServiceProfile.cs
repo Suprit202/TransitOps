@@ -14,6 +14,8 @@ namespace TransitOpsService.MappingProfiles
             CreateMap<Vehicle, VehicleDto>().ReverseMap();
             CreateMap<VehicleStatus, VehicleStatusDto>().ReverseMap();
             CreateMap<VehicleType, VehicleTypeDto>().ReverseMap();
+            CreateMap<Driver, DriverDto>().ReverseMap();
+            CreateMap<DriverStatus, DriverStatusDto>().ReverseMap();
         }
     }
 }
