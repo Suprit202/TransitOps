@@ -10,6 +10,8 @@ builder.Services.AddControllersWithViews();
 //Dependency injection
 builder.Services.AddUserInterfaceDI(ConnectionString);
 
+builder.Services.AddAutoMapper(cfg => { }, AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
