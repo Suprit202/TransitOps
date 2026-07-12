@@ -1,7 +1,14 @@
+using TransitOps.DependecyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Dependency injection
+builder.Services.AddUserInterfaceDI(ConnectionString);
 
 var app = builder.Build();
 

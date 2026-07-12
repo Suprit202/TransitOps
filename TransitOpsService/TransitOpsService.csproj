@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TransitOpsRepository\TransitOpsRepository.csproj" PrivateAssets="All"/>
+    <ProjectReference Include="..\TransitOpsRepository\TransitOpsRepository.csproj" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
