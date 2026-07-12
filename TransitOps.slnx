@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="TransitOps/TransitOps.csproj" />
+  <Project Path="TransitOpsRepository/TransitOpsRepository.csproj" Id="1564322c-c0b1-47b2-9a45-ef68c3820837" />
+  <Project Path="TransitOpsService/TransitOpsService.csproj" Id="63b4cd22-2f37-4275-a9dc-a9a233cab1be" />
 </Solution>
