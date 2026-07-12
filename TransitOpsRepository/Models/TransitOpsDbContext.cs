@@ -41,6 +41,8 @@ public partial class TransitOpsDbContext : DbContext
 
     public virtual DbSet<VehicleStatus> VehicleStatuses { get; set; }
 
+    public virtual DbSet<VehicleType> VehicleTypes { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
 
@@ -247,7 +249,6 @@ public partial class TransitOpsDbContext : DbContext
             entity.Property(e => e.RegistrationNumber).HasMaxLength(50);
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
             entity.Property(e => e.UpdatedBy).HasMaxLength(450);
-            entity.Property(e => e.VehicleType).HasMaxLength(50);
 
             entity.HasOne(d => d.Status).WithMany(p => p.Vehicles)
                 .HasForeignKey(d => d.StatusId)

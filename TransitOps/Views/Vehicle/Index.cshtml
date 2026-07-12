@@ -44,12 +44,23 @@
                         <tr class="border-b border-gray-700 hover:bg-gray-750 transition duration-150">
                             <td class="p-4 font-medium text-white">@item.RegistrationNumber</td>
                             <td class="p-4">@item.ModelName</td>
-                            <td class="p-4">@item.VehicleType</td>
+                            <td class="p-4">@item.VehicleTypeId</td>
                             <td class="p-4">@item.CapacityKg kg</td>
                             <td class="p-4">@item.Odometer</td>
                             <td class="p-4">@item.AcquisitionCost.ToString("N2")</td>
-                            <td class="p-4">
-                                <a href="#" class="text-blue-400 hover:text-blue-300 mr-3">Edit</a>
+                            <td class="p-4 flex items-center space-x-3">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="text-blue-400 hover:text-blue-300 transition duration-150">
+                                    Edit
+                                </a>
+
+                                <span class="text-gray-600">|</span>
+
+                                <!-- Calls the global modal, passing the URL, the entity type, and the name -->
+                                <button type="button"
+                                        onclick="openGlobalDeleteModal('@Url.Action("Delete", "Vehicle", new { id = item.Id })', 'vehicle', '@item.RegistrationNumber')"
+                                        class="text-red-400 hover:text-red-300 transition duration-150">
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                     }

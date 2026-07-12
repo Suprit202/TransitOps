@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TransitOpsService.DataTransferObject
 {
-    public class VehicleStatusDto
+    public class VehicleTypeDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

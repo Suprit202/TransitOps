@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TransitOpsService.DataTransferObject
+namespace TransitOpsRepository.Models
 {
-    public class VehicleStatusDto
+    public class VehicleType
     {
         public int Id { get; set; }
         public string Name { get; set; }

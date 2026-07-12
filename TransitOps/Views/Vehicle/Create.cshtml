@@ -1,0 +1,73 @@
+﻿@model TransitOps.Models.VehicleViewModel
+
+@{
+    ViewData["Title"] = "Add New Vehicle";
+}
+
+<div class="min-h-screen bg-gray-900 text-gray-200 p-8">
+    <div class="max-w-2xl mx-auto bg-gray-800 rounded-lg shadow-lg border border-gray-700 p-8">
+        <h2 class="text-2xl font-semibold text-white mb-6">Add New Vehicle</h2>
+
+        <form asp-action="Create" method="post">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+
+                <!-- Registration Number -->
+                <div>
+                    <label asp-for="RegistrationNumber" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                    <input asp-for="RegistrationNumber" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" placeholder="e.g., VAN-05" />
+                    <span asp-validation-for="RegistrationNumber" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Model Name -->
+                <div>
+                    <label asp-for="ModelName" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                    <input asp-for="ModelName" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" placeholder="e.g., Tata Ace" />
+                    <span asp-validation-for="ModelName" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Vehicle Type -->
+                <div>
+                    <label asp-for="VehicleTypeId" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                    <select asp-for="VehicleTypeId" asp-items="@ViewBag.TypeList" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                        <option value="">-- Select Type --</option>
+                    </select>
+                    <span asp-validation-for="VehicleTypeId" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Capacity -->
+                <div>
+                    <label asp-for="CapacityKg" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                    <input asp-for="CapacityKg" type="number" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+                    <span asp-validation-for="CapacityKg" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Acquisition Cost -->
+                <div>
+                    <label asp-for="AcquisitionCost" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                    <input asp-for="AcquisitionCost" type="number" step="0.01" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+                    <span asp-validation-for="AcquisitionCost" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Status Dropdown -->
+                <div>
+                    <label asp-for="StatusId" class="block text-sm font-medium text-gray-400 mb-1">Initial Status</label>
+                    <select asp-for="StatusId" asp-items="@ViewBag.StatusList" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500">
+                        <option value="">-- Select Status --</option>
+                    </select>
+                    <span asp-validation-for="StatusId" class="text-red-500 text-xs mt-1 block"></span>
+                </div>
+            </div>
+
+            <div class="flex justify-end space-x-4">
+                <a asp-action="Index" class="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition duration-150">Cancel</a>
+                <button type="submit" class="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded shadow transition duration-150">Save Vehicle</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

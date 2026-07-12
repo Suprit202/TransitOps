@@ -12,11 +12,18 @@ namespace TransitOpsService.Services
     public class VehicleService : IVehicleService
     {
         private readonly IGenericRepository<Vehicle> _vehicleRepository;
+        private readonly IGenericRepository<VehicleType> _typeRepository;
+        private readonly IGenericRepository<VehicleStatus> _statusRepository;
         private readonly IMapper _mapper;
 
-        public VehicleService(IGenericRepository<Vehicle> vehicleRepository, IMapper mapper)
+        public VehicleService(IGenericRepository<Vehicle> vehicleRepository,
+            IGenericRepository<VehicleStatus> statusRepository,
+            IMapper mapper,
+            IGenericRepository<VehicleType> typeRepository)
         {
             _vehicleRepository = vehicleRepository;
+            _statusRepository = statusRepository;
+            _typeRepository = typeRepository;
             _mapper = mapper;
         }
 
@@ -24,6 +31,18 @@ namespace TransitOpsService.Services
         {
             var vehicles = await _vehicleRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<VehicleDto>>(vehicles);
+        }
+
+        public async Task<IEnumerable<VehicleStatusDto>> GetVehicleStatusesAsync()
+        {
+            var statuses = await _statusRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<VehicleStatusDto>>(statuses);
+        }
+
+        public async Task<IEnumerable<VehicleTypeDto>> GetVehicleTypesAsync()
+        {
+            var types = await _typeRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<VehicleTypeDto>>(types);
         }
 
         public async Task<VehicleDto?> GetVehicleByIdAsync(int id)

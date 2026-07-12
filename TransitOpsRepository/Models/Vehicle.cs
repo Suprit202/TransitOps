@@ -11,7 +11,7 @@ public partial class Vehicle
 
     public string ModelName { get; set; } = null!;
 
-    public string VehicleType { get; set; } = null!;
+    public int VehicleTypeId { get; set; }
 
     public decimal CapacityKg { get; set; }
 

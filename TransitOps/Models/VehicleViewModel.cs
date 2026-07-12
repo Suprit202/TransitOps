@@ -14,9 +14,9 @@ namespace TransitOps.Models
         [Display(Name = "Name/Model")]
         public string ModelName { get; set; }
 
-        [Required]
-        [Display(Name = "Type")]
-        public string VehicleType { get; set; }
+        [Required(ErrorMessage = "Please select a vehicle type.")]
+        [Display(Name = "Vehicle Type")]
+        public int VehicleTypeId { get; set; }
 
         [Required]
         [Range(1, 50000, ErrorMessage = "Capacity must be greater than 0.")]
@@ -27,7 +27,7 @@ namespace TransitOps.Models
         public decimal Odometer { get; set; }
 
         [Required]
-        [Display(Name = "Acq. Cost")]
+        [Display(Name = "Acquisition Cost")]
         public decimal AcquisitionCost { get; set; }
 
         public int StatusId { get; set; }

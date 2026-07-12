@@ -9,7 +9,7 @@ namespace TransitOpsService.DataTransferObject
         public int Id { get; set; }
         public string RegistrationNumber { get; set; }
         public string ModelName { get; set; }
-        public string VehicleType { get; set; }
+        public int VehicleTypeId { get; set; }
         public decimal CapacityKg { get; set; }
         public decimal Odometer { get; set; }
         public decimal AcquisitionCost { get; set; }
