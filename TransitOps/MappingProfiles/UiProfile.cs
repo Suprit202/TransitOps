@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using TransitOps.Models;
+using TransitOpsService.DataTransferObject;
 
 namespace TransitOps.MappingProfiles
 {
@@ -6,7 +8,7 @@ namespace TransitOps.MappingProfiles
     {
         public UiProfile()
         {
-
+            CreateMap<VehicleDto, VehicleViewModel>().ReverseMap();
         }
     }
 }

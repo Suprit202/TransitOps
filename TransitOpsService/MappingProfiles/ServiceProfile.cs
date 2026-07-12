@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TransitOpsRepository.Models;
+using TransitOpsService.DataTransferObject;
 
 namespace TransitOpsService.MappingProfiles
 {
@@ -10,6 +11,7 @@ namespace TransitOpsService.MappingProfiles
     {
         public ServiceProfile()
         {
+            CreateMap<Vehicle, VehicleDto>().ReverseMap();
         }
     }
 }

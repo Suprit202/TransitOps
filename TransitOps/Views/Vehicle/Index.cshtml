@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TransitOps.Models.VehicleViewModel>
+
+@{
+    ViewData["Title"] = "Vehicle Registry";
+}
+
+<div class="min-h-screen bg-gray-900 text-gray-200 p-8">
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h1 class="text-3xl font-semibold text-white">TransitOps</h1>
+            <h2 class="text-xl text-gray-400 mt-1">Vehicle Registry</h2>
+        </div>
+        <div>
+            <a asp-action="Create" class="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded shadow">
+                + Add Vehicle
+            </a>
+        </div>
+    </div>
+
+    <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-gray-900 border-b border-gray-700 text-sm tracking-wider uppercase text-gray-400">
+                    <th class="p-4 font-medium">Reg. No. (Unique)</th>
+                    <th class="p-4 font-medium">Name/Model</th>
+                    <th class="p-4 font-medium">Type</th>
+                    <th class="p-4 font-medium">Capacity</th>
+                    <th class="p-4 font-medium">Odometer</th>
+                    <th class="p-4 font-medium">Acq. Cost</th>
+                    <th class="p-4 font-medium">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-sm">
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="7" class="p-6 text-center text-gray-500">No vehicles registered yet.</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr class="border-b border-gray-700 hover:bg-gray-750 transition duration-150">
+                            <td class="p-4 font-medium text-white">@item.RegistrationNumber</td>
+                            <td class="p-4">@item.ModelName</td>
+                            <td class="p-4">@item.VehicleType</td>
+                            <td class="p-4">@item.CapacityKg kg</td>
+                            <td class="p-4">@item.Odometer</td>
+                            <td class="p-4">@item.AcquisitionCost.ToString("N2")</td>
+                            <td class="p-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 mr-3">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

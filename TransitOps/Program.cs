@@ -10,6 +10,7 @@ builder.Services.AddControllersWithViews();
 //Dependency injection
 builder.Services.AddUserInterfaceDI(ConnectionString);
 
+//Automapper configuration
 builder.Services.AddAutoMapper(cfg => { }, AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();

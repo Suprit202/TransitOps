@@ -1,0 +1,35 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TransitOps.Models
+{
+    public class VehicleViewModel
+    {
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Registration Number is mandatory.")]
+        [Display(Name = "Reg. No. (Unique)")]
+        public string RegistrationNumber { get; set; }
+
+        [Required(ErrorMessage = "Model Name is required.")]
+        [Display(Name = "Name/Model")]
+        public string ModelName { get; set; }
+
+        [Required]
+        [Display(Name = "Type")]
+        public string VehicleType { get; set; }
+
+        [Required]
+        [Range(1, 50000, ErrorMessage = "Capacity must be greater than 0.")]
+        [Display(Name = "Capacity (kg)")]
+        public decimal CapacityKg { get; set; }
+
+        [Display(Name = "Odometer")]
+        public decimal Odometer { get; set; }
+
+        [Required]
+        [Display(Name = "Acq. Cost")]
+        public decimal AcquisitionCost { get; set; }
+
+        public int StatusId { get; set; }
+    }
+}
