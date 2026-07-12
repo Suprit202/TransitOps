@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using TransitOps.DependecyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 var ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add<TransitOps.Filters.GlobalSearchFilter>();
+});
 
 //Dependency injection
 builder.Services.AddUserInterfaceDI(ConnectionString);

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TransitOps.Attributes;
 
 namespace TransitOps.Models
 {
@@ -6,10 +7,12 @@ namespace TransitOps.Models
     {
         public int Id { get; set; }
 
+        [Searchable]
         [Required(ErrorMessage = "Registration Number is mandatory.")]
         [Display(Name = "Reg. No. (Unique)")]
         public string RegistrationNumber { get; set; }
 
+        [Searchable]
         [Required(ErrorMessage = "Model Name is required.")]
         [Display(Name = "Name/Model")]
         public string ModelName { get; set; }
@@ -24,6 +27,7 @@ namespace TransitOps.Models
         public decimal CapacityKg { get; set; }
 
         [Display(Name = "Odometer")]
+        [Required(ErrorMessage = "Please select a Odometer value.")]
         public decimal Odometer { get; set; }
 
         [Required]

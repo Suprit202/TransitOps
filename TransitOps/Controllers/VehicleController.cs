@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
+using TransitOps.Attributes;
 using TransitOps.Models;
 using TransitOpsService.DataTransferObject;
 using TransitOpsService.Services.IServices;
@@ -20,6 +23,7 @@ namespace TransitOps.Controllers
 
         public async Task<IActionResult> Index()
         {
+
             var vehicles = await _vehicleService.GetAllVehiclesAsync();
             var viewModels = _mapper.Map<IEnumerable<VehicleViewModel>>(vehicles);
 

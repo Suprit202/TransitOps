@@ -39,6 +39,14 @@
                     <label asp-for="CapacityKg" class="block text-sm font-medium text-gray-400 mb-1"></label>
                     <input asp-for="CapacityKg" type="number" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
                     <span asp-validation-for="CapacityKg" class="text-red-500 text-xs mt-1 block"></span>
+                </div
+
+                
+                <!-- Odometer -->
+                <div>
+                    <label asp-for="Odometer" class="block text-sm font-medium text-gray-400 mb-1"></label>
+                    <input asp-for="Odometer" type="number" step="0.1" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white focus:outline-none focus:border-blue-500" />
+                    <span asp-validation-for="Odometer" class="text-red-500 text-xs mt-1 block"></span>
                 </div>
 
                 <!-- Acquisition Cost -->
