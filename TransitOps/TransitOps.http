@@ -1,0 +1,6 @@
+@TransitOps_HostAddress = http://localhost:5296
+
+GET {{TransitOps_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

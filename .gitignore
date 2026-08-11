@@ -1,0 +1,35 @@
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+# Build and Release Folders
+bin/
+obj/
+
+# Local Configuration and User Secrets
+# (Ensures your local database connection strings and API keys stay private)
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# NuGet Packages
+*.nupkg
+packages/
+
+# Logs
+*.log
+
+# Publish Output
+# (Ignores the compiled output generated when you publish the API)
+/publish/
+out/
+
+# Operating System Generated Files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
